@@ -15,6 +15,11 @@ import {AngularFireModule} from '@angular/fire';
 import {environment} from '../environments/environment';
 import {AngularFirestoreModule} from '@angular/fire/firestore';
 import {AngularFireStorageModule} from '@angular/fire/storage';
+import { AboutComponent } from './cv-components/about/about.component';
+import { EducationComponent } from './cv-components/education/education.component';
+import { LanguagesComponent } from './cv-components/languages/languages.component';
+import { ExperiencesComponent } from './cv-components/experiences/experiences.component';
+import { JobsComponent } from './cv-components/jobs/jobs.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +27,12 @@ import {AngularFireStorageModule} from '@angular/fire/storage';
     HeaderComponent,
     BasicInfoComponent,
     CvComponent,
-    ExtendedInfoComponent
+    ExtendedInfoComponent,
+    AboutComponent,
+    EducationComponent,
+    LanguagesComponent,
+    ExperiencesComponent,
+    JobsComponent
   ],
   imports: [
     BrowserModule,

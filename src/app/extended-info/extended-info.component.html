@@ -1,52 +1,9 @@
 <div class="container" fxLayout="column" fxLayoutGap="10px">
-  <mat-card class="profile_text">
-    <mat-card-title>Om Mig</mat-card-title>
-    <mat-card-content>
-      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur eget venenatis neque, non interdum eros.
-      Pellentesque hendrerit ullamcorper suscipit. In tincidunt enim at justo viverra dictum. Maecenas ullamcorper
-      accumsan mi vitae rhoncus. Praesent vestibulum tincidunt velit at placerat. In laoreet nisl ut tortor sodales
-      consectetur. Vestibulum maximus elit non feugiat volutpat. Suspendisse ac rutrum nunc, sed accumsan ligula.
-      Integer at purus ac ligula pharetra tempor. Maecenas laoreet, enim at blandit lacinia, turpis mauris facilisis
-      magna, et ornare ipsum libero maximus neque. Suspendisse vehicula tincidunt odio. Maecenas dictum eros id
-      pellentesque ultrices. Maecenas sed hendrerit lorem.
-    </mat-card-content>
-  </mat-card>
+  <app-about></app-about>
   <span fxLayout="row" fxLayoutAlign="space-between">
-    <mat-card fxFlex="48%">
-      <mat-card-title>Uddannelse</mat-card-title>
-      <mat-card-content>2014 - HHX</mat-card-content>
-    </mat-card>
-    <mat-card fxFlex="48%">
-      <mat-card-title>Sprog</mat-card-title>
-      <mat-card-content>Engelsk - Flydende</mat-card-content>
-    </mat-card>
+   <app-education fxFlex="48%"></app-education>
+   <app-languages fxFlex="48%"></app-languages>
   </span>
-  <mat-card class="experience">
-    <mat-card-title>Kompetencer</mat-card-title>
-    <mat-card-content fxLayout="column" fxLayoutGap="10px">
-      <span class="exp">
-        <span class="headers_exp" fxLayout="row" fxLayoutAlign="space-between">
-          <span class="header">Angular 2+</span>
-          <span>&#9733;&#9733;&#9733;&#9734;&#9734;</span>
-        </span>
-        <span class="desc">
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer porttitor suscipit purus non semper. Nam elementum aliquam felis, quis condimentum eros porttitor ac. Phasellus facilisis quam non metus varius lacinia. Integer finibus velit et massa auctor venenatis. Aliquam maximus metus vehicula, finibus enim id, ultrices leo. Interdum et malesuada fames ac ante ipsum primis in faucibus. Duis nulla metus, porta.
-        </span>
-      </span>
-    </mat-card-content>
-  </mat-card>
-  <mat-card class="job">
-    <mat-card-title>Erhvervserfaring</mat-card-title>
-    <mat-card-content fxLayout="column" fxLayoutGap="10px">
-      <span class="job">
-        <span class="headers_job" fxLayout="row" fxLayoutAlign="space-between">
-          <span class="header">Den Jyske Kontrolcentral</span>
-          <span class="years">2017 - </span>
-        </span>
-        <span class="desc">
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer porttitor suscipit purus non semper. Nam elementum aliquam felis, quis condimentum eros porttitor ac. Phasellus facilisis quam non metus varius lacinia. Integer finibus velit et massa auctor venenatis. Aliquam maximus metus vehicula, finibus enim id, ultrices leo. Interdum et malesuada fames ac ante ipsum primis in faucibus. Duis nulla metus, porta.
-        </span>
-      </span>
-    </mat-card-content>
-  </mat-card>
+  <app-experiences></app-experiences>
+  <app-jobs></app-jobs>
 </div>

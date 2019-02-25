@@ -1,16 +1,16 @@
 <div class="container" fxLayout="column">
   <mat-card class="info-card">
     <mat-card-header>
-      <mat-card-title>Kasper Siig</mat-card-title>
-      <mat-card-subtitle>DevOps Enthusiast</mat-card-subtitle>
+      <mat-card-title>{{ info?.name }}</mat-card-title>
+      <mat-card-subtitle>{{ info?.title }}</mat-card-subtitle>
     </mat-card-header>
     <img mat-card-image src="assets/imgs/dp.png" class="mat-card-image">
     <mat-card-content>
         <ul fxLayoutGap="5px" fxLayout="column">
-          <li><b>Tlf:</b> +45 6170 3790</li>
-          <li><b>Mail:</b> kaspervarde@gmail.com</li>
-          <li><b>Bopæl:</b> Esbjerg</li>
-          <li><b>Fødselsdato:</b> 20. Jan 1998</li>
+          <li><b>Tlf:</b> +45 {{ info?.phone }}</li>
+          <li><b>Mail:</b> {{ info?.email }}</li>
+          <li><b>Bopæl:</b> {{ info?.address }}</li>
+          <li><b>Fødselsdato:</b> {{ info?.birthday.seconds * 1000 | date}}</li>
         </ul>
     </mat-card-content>
   </mat-card>

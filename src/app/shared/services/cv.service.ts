@@ -1,7 +1,8 @@
 import { Injectable } from '@angular/core';
 import {ICV} from '../interfaces/services/icv';
 import {AngularFireStorage} from '@angular/fire/storage';
-import {AngularFirestore} from '@angular/fire/firestore';
+import {AngularFirestore, AngularFirestoreDocument} from '@angular/fire/firestore';
+import {Observable} from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -14,5 +15,7 @@ export class CvService implements ICV {
   updateField(input: string, field: string) {
   }
 
-  getDocument
+  getDocument(document: string): Observable<any> {
+   return this.db.collection('cv').doc(document).valueChanges();
+  }
 }
