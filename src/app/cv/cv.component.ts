@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Inject, OnInit} from '@angular/core';
+import {ICV} from '../shared/interfaces/services/icv';
 
 @Component({
   selector: 'app-cv',
@@ -7,7 +8,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CvComponent implements OnInit {
 
-  constructor() { }
+  constructor(@Inject('InterfaceCV') private CvService: ICV) { }
 
   ngOnInit() {
   }

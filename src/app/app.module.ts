@@ -10,6 +10,11 @@ import {BasicInfoComponent} from './basic-info/basic-info.component';
 import {CvComponent} from './cv/cv.component';
 import {FlexLayoutModule} from '@angular/flex-layout';
 import {ExtendedInfoComponent} from './extended-info/extended-info.component';
+import {CvService} from './shared/services/cv.service';
+import {AngularFireModule} from '@angular/fire';
+import {environment} from '../environments/environment';
+import {AngularFirestoreModule} from '@angular/fire/firestore';
+import {AngularFireStorageModule} from '@angular/fire/storage';
 
 @NgModule({
   declarations: [
@@ -25,9 +30,17 @@ import {ExtendedInfoComponent} from './extended-info/extended-info.component';
     BrowserAnimationsModule,
     MatToolbarModule,
     FlexLayoutModule,
-    MatCardModule
+    MatCardModule,
+    AngularFireModule.initializeApp(environment.firebase),
+    AngularFirestoreModule,
+    AngularFireStorageModule
   ],
-  providers: [],
+  providers: [
+    {
+      provide: 'InterfaceCV',
+      useClass: CvService
+    }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule {
