@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 
 @Component({
   selector: 'app-languages',
@@ -7,9 +7,17 @@ import { Component, OnInit } from '@angular/core';
 })
 export class LanguagesComponent implements OnInit {
 
-  constructor() { }
+  @Input() langs: any[];
+
+  constructor() {
+  }
 
   ngOnInit() {
+  }
+
+
+  generateArray(obj) {
+    return obj !== null ? Object.keys(obj).map((key) => ({key: key, value: obj[key]})) : [];
   }
 
 }

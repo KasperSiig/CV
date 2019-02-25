@@ -1,6 +1,13 @@
 <div class="container" fxLayoutAlign="space-around">
   <div fxLayout="row" fxFlex="80%" fxLayoutAlign="space-between">
-    <app-basic-info fxFlex="28%"></app-basic-info>
-    <app-extended-info fxFlex="68%"></app-extended-info>
+    <app-basic-info
+      fxFlex="28%"
+      [basicInfo]="basicInfo"></app-basic-info>
+    <app-extended-info
+      fxFlex="68%"
+      [educations]="educations"
+      [experiences]="experiences"
+      [jobs]="jobs"
+      [basicInfo]="basicInfo"></app-extended-info>
   </div>
 </div>

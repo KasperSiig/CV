@@ -1,4 +1,5 @@
-import {Timestamp} from 'rxjs';
+import { firestore } from 'firebase';
+import Timestamp = firestore.Timestamp;
 
 export class BasicInfo {
   about: string;

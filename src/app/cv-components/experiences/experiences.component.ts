@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
+import {Experience} from '../../shared/models/Experience';
+import {repeat} from 'rxjs/operators';
 
 @Component({
   selector: 'app-experiences',
@@ -7,9 +9,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ExperiencesComponent implements OnInit {
 
-  constructor() { }
+  @Input() experiences: Experience[];
+
+  constructor() {
+  }
 
   ngOnInit() {
   }
 
+  genStars(count: number) {
+    return '★'.repeat(count) + '☆'.repeat(5 - count);
+  }
 }

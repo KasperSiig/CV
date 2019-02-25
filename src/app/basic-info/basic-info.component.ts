@@ -1,6 +1,6 @@
-import {Component, Inject, OnInit} from '@angular/core';
+import {Component, Inject, Input, OnInit} from '@angular/core';
 import {ICV} from '../shared/interfaces/services/icv';
-import {Subscription} from 'rxjs';
+import {BasicInfo} from '../shared/models/BasicInfo';
 
 @Component({
   selector: 'app-basic-info',
@@ -9,18 +9,11 @@ import {Subscription} from 'rxjs';
 })
 export class BasicInfoComponent implements OnInit {
 
-  sub: Subscription;
-  info: any;
+  @Input() basicInfo: BasicInfo;
 
   constructor(@Inject('InterfaceCV') private CvService: ICV) { }
 
   ngOnInit() {
-    this.sub = this.CvService.getDocument('info')
-      .subscribe(data => {
-        this.info = data;
-        console.log(this.info);
-      });
-
   }
 
 }
