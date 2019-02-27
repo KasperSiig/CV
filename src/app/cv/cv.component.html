@@ -1,13 +1,29 @@
-<div class="container" fxLayoutAlign="space-around">
-  <div fxLayout="row" fxFlex="80%" fxLayoutAlign="space-between">
-    <app-basic-info
-      fxFlex="28%"
-      [basicInfo]="basicInfo"></app-basic-info>
-    <app-extended-info
-      fxFlex="68%"
-      [educations]="educations"
-      [experiences]="experiences"
-      [jobs]="jobs"
-      [basicInfo]="basicInfo"></app-extended-info>
+<div
+  class="container"
+  fxLayoutAlign="center">
+  <div
+    fxFlex="80%"
+    fxLayout="column"
+    fxLayoutGap="10px">
+    <button
+      *ngIf="!isSaved"
+      (click)="onSave()"
+      mat-raised-button
+      class="btn__save">Update Info
+    </button>
+    <div
+      fxLayout="row"
+      fxFlex="80%"
+      fxLayoutAlign="space-between">
+      <app-basic-info
+        fxFlex="28%"
+        [basicInfo]="basicInfo"></app-basic-info>
+      <app-extended-info
+        fxFlex="68%"
+        [educations]="educations"
+        [experiences]="experiences"
+        [jobs]="jobs"
+        [basicInfo]="basicInfo"></app-extended-info>
+    </div>
   </div>
 </div>

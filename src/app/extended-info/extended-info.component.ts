@@ -17,7 +17,7 @@ export class ExtendedInfoComponent implements OnInit {
   @Input() jobs: Job[];
   @Input() basicInfo: BasicInfo;
 
-  constructor(@Inject('InterfaceCV') private CvService: ICV) { }
+  constructor() { }
 
   ngOnInit() {
   }

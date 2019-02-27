@@ -1,13 +1,19 @@
 <mat-card class="job">
   <mat-card-title>Erhvervserfaring</mat-card-title>
-  <mat-card-content fxLayout="column" fxLayoutGap="10px">
-      <span class="job">
+  <mat-card-content
+    fxLayout="column"
+    fxLayoutGap="10px"
+    *ngFor="let job of jobs">
+      <span
+        class="job"
+        fxLayout="column">
         <span class="headers" fxLayout="row" fxLayoutAlign="space-between">
-          <span class="header">Den Jyske Kontrolcentral</span>
-          <span class="years">2017 - </span>
+          <span class="header">{{ job.place}}</span>
+          <span class="years">{{ job.startYear }} - {{ job.endYear | zeroYear}}</span>
         </span>
+        <span class="title">{{ job.name }}</span>
         <span class="desc">
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer porttitor suscipit purus non semper. Nam elementum aliquam felis, quis condimentum eros porttitor ac. Phasellus facilisis quam non metus varius lacinia. Integer finibus velit et massa auctor venenatis. Aliquam maximus metus vehicula, finibus enim id, ultrices leo. Interdum et malesuada fames ac ante ipsum primis in faucibus. Duis nulla metus, porta.
+          {{ job.desc }}
         </span>
       </span>
   </mat-card-content>

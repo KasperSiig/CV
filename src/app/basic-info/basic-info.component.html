@@ -10,7 +10,7 @@
           <li><b>Tlf:</b> +45 {{ basicInfo?.phone }}</li>
           <li><b>Mail:</b> {{ basicInfo?.email }}</li>
           <li><b>Bopæl:</b> {{ basicInfo?.address }}</li>
-          <li><b>Fødselsdato:</b> {{ basicInfo?.birthday.seconds * 1000 | date}}</li>
+          <li><b>Fødselsdato:</b> {{ basicInfo?.birthday?.seconds * 1000 | date}}</li>
         </ul>
     </mat-card-content>
   </mat-card>

@@ -8,7 +8,7 @@
     <i>{{ education.eduName }}</i>
     <span fxLayoutAlign="end" class="yearSpan">
       <span class="years">
-      {{ education.startYear }} - {{ education.endYear }}
+      {{ education.startYear }} - {{ education.endYear | zeroYear }}
       </span>
     </span>
   </mat-card-content>

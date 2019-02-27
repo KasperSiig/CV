@@ -1,4 +1,4 @@
-import {Component, Inject, OnInit} from '@angular/core';
+import {Component, Inject, OnDestroy, OnInit} from '@angular/core';
 import {ICV} from '../shared/interfaces/services/icv';
 import {BasicInfo} from '../shared/models/BasicInfo';
 import {Subscription} from 'rxjs';
@@ -13,38 +13,54 @@ import {forEach} from '@angular/router/src/utils/collection';
   templateUrl: './cv.component.html',
   styleUrls: ['./cv.component.scss']
 })
-export class CvComponent implements OnInit {
+export class CvComponent implements OnInit, OnDestroy {
 
   basicInfo: BasicInfo;
   educations: Education[];
   experiences: Experience[];
   jobs: Job[];
+  isSaved = true;
 
   sub: Subscription;
 
-  constructor(@Inject('InterfaceCV') private CvService: ICV) { }
+  constructor(@Inject('InterfaceCV') private cvService: ICV) { }
 
   ngOnInit() {
-    this.sub = this.CvService.getBasicInfo()
+    this.cvService.fetchBasicInfo();
+    this.sub = this.cvService.basicInfo
       .pipe(
         switchMap(basicInfo => {
           this.basicInfo = basicInfo;
-          return this.CvService.getEducation();
+          return this.cvService.getEducation();
         })
-      ).pipe(
+      )
+      .pipe(
         switchMap(educations => {
           this.educations = educations;
-          return this.CvService.getExperiences();
+          return this.cvService.getExperiences();
         })
       ).pipe(
         switchMap(experiences => {
           this.experiences = experiences;
-          console.log(experiences);
-          return this.CvService.getJobs();
+          return this.cvService.getJobs();
         })
-      ).subscribe(jobs => {
-        this.jobs = jobs;
+      )
+      .pipe(
+        switchMap(jobs => {
+          this.jobs = jobs;
+          return this.cvService.isSaved;
+        })
+      ).subscribe(isSaved => {
+        this.isSaved = isSaved;
       });
+  }
+
+  ngOnDestroy() {
+    this.sub.unsubscribe();
+  }
+
+  onSave() {
+    this.cvService.save();
   }
 
 }

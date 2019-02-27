@@ -11,7 +11,7 @@ export class BasicInfoComponent implements OnInit {
 
   @Input() basicInfo: BasicInfo;
 
-  constructor(@Inject('InterfaceCV') private CvService: ICV) { }
+  constructor() { }
 
   ngOnInit() {
   }

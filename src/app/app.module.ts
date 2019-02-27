@@ -5,7 +5,7 @@ import {AppRoutingModule} from './app-routing.module';
 import {AppComponent} from './app.component';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {HeaderComponent} from './shared/header/header.component';
-import {MatCardModule, MatToolbarModule} from '@angular/material';
+import {MatButtonModule, MatCardModule, MatFormFieldModule, MatInputModule, MatToolbarModule} from '@angular/material';
 import {BasicInfoComponent} from './basic-info/basic-info.component';
 import {CvComponent} from './cv/cv.component';
 import {FlexLayoutModule} from '@angular/flex-layout';
@@ -20,6 +20,9 @@ import { EducationComponent } from './cv-components/education/education.componen
 import { LanguagesComponent } from './cv-components/languages/languages.component';
 import { ExperiencesComponent } from './cv-components/experiences/experiences.component';
 import { JobsComponent } from './cv-components/jobs/jobs.component';
+import { ZeroYearPipe } from './shared/models/shared/pipes/zero-year.pipe';
+import {TextFieldModule} from '@angular/cdk/text-field';
+import {ReactiveFormsModule} from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -32,7 +35,8 @@ import { JobsComponent } from './cv-components/jobs/jobs.component';
     EducationComponent,
     LanguagesComponent,
     ExperiencesComponent,
-    JobsComponent
+    JobsComponent,
+    ZeroYearPipe
   ],
   imports: [
     BrowserModule,
@@ -43,7 +47,12 @@ import { JobsComponent } from './cv-components/jobs/jobs.component';
     MatCardModule,
     AngularFireModule.initializeApp(environment.firebase),
     AngularFirestoreModule,
-    AngularFireStorageModule
+    AngularFireStorageModule,
+    TextFieldModule,
+    ReactiveFormsModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatButtonModule
   ],
   providers: [
     {

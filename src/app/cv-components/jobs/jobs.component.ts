@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
+import {Job} from '../../shared/models/Job';
 
 @Component({
   selector: 'app-jobs',
@@ -6,6 +7,8 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./jobs.component.scss']
 })
 export class JobsComponent implements OnInit {
+
+  @Input() jobs: Job[];
 
   constructor() { }
 
