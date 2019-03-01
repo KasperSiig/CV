@@ -1,6 +1,6 @@
 <mat-card>
   <mat-card-title>Sprog</mat-card-title>
-  <mat-card-content *ngFor="let lang of generateArray(langs)">
+  <mat-card-content *ngFor="let lang of arrayFromObject(langs)">
     <b>{{ lang.key | titlecase }}</b> - {{ lang.value }}
   </mat-card-content>
 </mat-card>

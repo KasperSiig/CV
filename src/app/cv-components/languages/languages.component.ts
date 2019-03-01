@@ -16,7 +16,7 @@ export class LanguagesComponent implements OnInit {
   }
 
 
-  generateArray(obj) {
+  arrayFromObject(obj) {
     return obj !== null ? Object.keys(obj).map((key) => ({key: key, value: obj[key]})) : [];
   }
 

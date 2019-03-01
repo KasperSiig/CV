@@ -1,17 +1,23 @@
-<div class="container" fxLayout="column">
-  <mat-card class="info-card">
+<div
+  class="container"
+  fxLayout="column">
+  <mat-card>
     <mat-card-header>
       <mat-card-title>{{ basicInfo?.name }}</mat-card-title>
       <mat-card-subtitle>{{ basicInfo?.title }}</mat-card-subtitle>
     </mat-card-header>
-    <img mat-card-image src="assets/imgs/dp.png" class="mat-card-image">
+    <img
+      mat-card-image
+      src="assets/imgs/dp.png">
     <mat-card-content>
-        <ul fxLayoutGap="5px" fxLayout="column">
-          <li><b>Tlf:</b> +45 {{ basicInfo?.phone }}</li>
-          <li><b>Mail:</b> {{ basicInfo?.email }}</li>
-          <li><b>Bopæl:</b> {{ basicInfo?.address }}</li>
-          <li><b>Fødselsdato:</b> {{ basicInfo?.birthday?.seconds * 1000 | date}}</li>
-        </ul>
+      <ul
+        fxLayoutGap="5px"
+        fxLayout="column">
+        <li><b>Tlf:</b> +45 {{ basicInfo?.phone }}</li>
+        <li><b>Mail:</b> {{ basicInfo?.email }}</li>
+        <li><b>Bopæl:</b> {{ basicInfo?.address }}</li>
+        <li><b>Fødselsdato:</b> {{ basicInfo?.birthday?.seconds * 1000 | date}}</li>
+      </ul>
     </mat-card-content>
   </mat-card>
 </div>

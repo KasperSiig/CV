@@ -6,8 +6,10 @@
     fxLayoutGap="2px">
     <b>{{ education.schoolName }}</b>
     <i>{{ education.eduName }}</i>
-    <span fxLayoutAlign="end" class="yearSpan">
-      <span class="years">
+    <span
+      fxLayoutAlign="end"
+      class="year-span">
+      <span class="year-span__years">
       {{ education.startYear }} - {{ education.endYear | zeroYear }}
       </span>
     </span>

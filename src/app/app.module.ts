@@ -23,6 +23,8 @@ import { JobsComponent } from './cv-components/jobs/jobs.component';
 import { ZeroYearPipe } from './shared/models/shared/pipes/zero-year.pipe';
 import {TextFieldModule} from '@angular/cdk/text-field';
 import {ReactiveFormsModule} from '@angular/forms';
+import {MaterialModule} from './shared/modules/material/material.module';
+import {FirebaseModule} from './shared/modules/firebase/firebase.module';
 
 @NgModule({
   declarations: [
@@ -42,17 +44,11 @@ import {ReactiveFormsModule} from '@angular/forms';
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
-    MatToolbarModule,
     FlexLayoutModule,
-    MatCardModule,
-    AngularFireModule.initializeApp(environment.firebase),
-    AngularFirestoreModule,
-    AngularFireStorageModule,
     TextFieldModule,
     ReactiveFormsModule,
-    MatFormFieldModule,
-    MatInputModule,
-    MatButtonModule
+    MaterialModule,
+    FirebaseModule
   ],
   providers: [
     {

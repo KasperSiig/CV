@@ -22,6 +22,7 @@ export class AboutComponent implements OnInit {
   }
 
   onInitialSave(event: KeyboardEvent) {
+    // Press ctrl + enter to save locally
     if (event.ctrlKey) {
       const srcElement = event.srcElement as HTMLTextAreaElement;
       this.cvService.updateAbout(srcElement.value);
