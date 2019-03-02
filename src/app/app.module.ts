@@ -25,6 +25,8 @@ import {TextFieldModule} from '@angular/cdk/text-field';
 import {ReactiveFormsModule} from '@angular/forms';
 import {MaterialModule} from './shared/modules/material/material.module';
 import {FirebaseModule} from './shared/modules/firebase/firebase.module';
+import {ImageCropperModule} from 'ngx-image-cropper';
+import {FileService} from './shared/services/file.service';
 
 @NgModule({
   declarations: [
@@ -48,12 +50,17 @@ import {FirebaseModule} from './shared/modules/firebase/firebase.module';
     TextFieldModule,
     ReactiveFormsModule,
     MaterialModule,
-    FirebaseModule
+    FirebaseModule,
+    ImageCropperModule
   ],
   providers: [
     {
-      provide: 'InterfaceCV',
+      provide: 'ICvService',
       useClass: CvService
+    },
+    {
+      provide: 'IFileService',
+      useClass: FileService
     }
   ],
   bootstrap: [AppComponent]

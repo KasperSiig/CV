@@ -9,7 +9,7 @@ export const environment = {
     authDomain: 'cvsite-b10e2.firebaseapp.com',
     databaseURL: 'https://cvsite-b10e2.firebaseio.com',
     projectId: 'cvsite-b10e2',
-    storageBucket: '',
+    storageBucket: 'cvsite-b10e2.appspot.com',
     messagingSenderId: '478758119820'
   }
 };

@@ -8,7 +8,19 @@
     </mat-card-header>
     <img
       mat-card-image
-      src="assets/imgs/dp.png">
+      [src]="croppedImage"
+      (dblclick)="onToggleEditPic()">
+    <span *ngIf="isEditingPic">
+        <input type="file" (change)="onPicChange($event)" accept="image/*">
+        <button (click)="onSave()">Save picture</button>
+      <image-cropper
+        class="basic-info__cropper"
+        [imageChangedEvent]="imageChangedEvent"
+        format="png"
+        (imageCropped)="onImageCropped($event)"
+        [aspectRatio]="9/13"
+        [onlyScaleDown]="true"></image-cropper>
+    </span>
     <mat-card-content>
       <ul
         fxLayoutGap="5px"

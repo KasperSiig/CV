@@ -3,14 +3,16 @@ import {BasicInfo} from '../../models/BasicInfo';
 import {Education} from '../../models/Education';
 import {Experience} from '../../models/Experience';
 import {Job} from '../../models/Job';
+import {ImageMetaData} from '../../models/ImageMetaData';
 
-export interface ICV {
+export interface ICvService {
 
   /* Variables */
   isSaved: BehaviorSubject<boolean>;
   basicInfo: BehaviorSubject<BasicInfo>;
 
   /* Read */
+
   /**
    * Fetches data from, and creates link to Firebase
    */
@@ -31,8 +33,9 @@ export interface ICV {
    */
   getJobs(): Observable<Job[]>;
   /* Update */
+
   /**
-   * Updates BehaviorSubject in ICV
+   * Updates BehaviorSubject in ICvService
    * @param about New text in about field
    */
   updateAbout(about: string);
@@ -42,5 +45,9 @@ export interface ICV {
    */
   save();
 
-
+  /**
+   * Updates the local picture
+   * @param metaDataForImage Object containing image data
+   */
+  updatePic(metaDataForImage: ImageMetaData);
 }

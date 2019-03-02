@@ -1,5 +1,5 @@
 import {Component, Inject, Input, OnInit} from '@angular/core';
-import {ICV} from '../../shared/interfaces/services/icv';
+import {ICvService} from '../../shared/interfaces/services/ICvService';
 
 @Component({
   selector: 'app-about',
@@ -12,7 +12,7 @@ export class AboutComponent implements OnInit {
 
   isEditing = false;
 
-  constructor(@Inject('InterfaceCV') private cvService: ICV) { }
+  constructor(@Inject('ICvService') private cvService: ICvService) { }
 
   ngOnInit() {
   }
