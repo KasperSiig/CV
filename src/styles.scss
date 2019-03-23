@@ -1,5 +1,26 @@
 @import "~@angular/material/prebuilt-themes/indigo-pink.css";
+@import url('https://fonts.googleapis.com/css?family=Fjalla+One');
+@import '~@angular/material/theming';
 
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+html, body {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+  background-color: hsl(197, 29%, 91%);
+}
+
+mat-card-title {
+  font-family: 'Fjalla One', sans-serif;
+}
+
+mat-card-title h2 {
+  display: inline;
+}
+
+.mat-content, .mat-content textarea {
+  font-size: 1.0em;
+}
 

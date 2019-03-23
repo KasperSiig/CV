@@ -11,7 +11,8 @@ export const environment = {
     projectId: 'cvsite-b10e2',
     storageBucket: 'cvsite-b10e2.appspot.com',
     messagingSenderId: '478758119820'
-  }
+  },
+  apiUrl: 'http://localhost:5001/cvsite-b10e2/us-central1/restApi'
 };
 
 /*

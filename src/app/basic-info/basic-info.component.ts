@@ -4,6 +4,7 @@ import {BasicInfo} from '../shared/models/BasicInfo';
 import {ImageCroppedEvent} from 'ngx-image-cropper';
 import {Subscription} from 'rxjs';
 import {ImageMetaData} from '../shared/models/ImageMetaData';
+import {Education} from '../shared/models/Education';
 
 @Component({
   selector: 'app-basic-info',
@@ -13,6 +14,7 @@ import {ImageMetaData} from '../shared/models/ImageMetaData';
 export class BasicInfoComponent implements OnInit, OnDestroy {
 
   @Input() basicInfo: BasicInfo;
+  @Input() educations: Education[];
 
   isEditingPic = false;
   croppedImage = '';

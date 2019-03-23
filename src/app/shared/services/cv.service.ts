@@ -38,7 +38,14 @@ export class CvService implements ICvService {
   }
 
   getExperiences(): Observable<Experience[]> {
-    return this.db.collection<Experience>('experiences').valueChanges();
+    return this.db.collection<Experience>('experiences').valueChanges()
+      .pipe(
+        map(exp => {
+          return exp.sort((expa, expb) => {
+            return expa.name < expb.name ? -1 : 1;
+          });
+        })
+      );
   }
 
   getJobs(): Observable<Job[]> {
@@ -59,7 +66,7 @@ export class CvService implements ICvService {
   save() {
     this.fileService.uploadImage(this.imageMetaData)
       .subscribe(uploadTask => {
-        const task = uploadTask as UploadTaskSnapshot;
+        const task = uploadTask as unknown as UploadTaskSnapshot;
         const fullPath = task.metadata.fullPath;
         const id = fullPath.substr(fullPath.lastIndexOf('/'));
         this.fileService.getFileUrl(id)

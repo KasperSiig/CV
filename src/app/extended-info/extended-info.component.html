@@ -3,16 +3,7 @@
   fxLayout="column"
   fxLayoutGap="10px">
   <app-about [about]="basicInfo?.about"></app-about>
-  <span
-    fxLayout="row"
-    fxLayoutAlign="space-between">
-   <app-education
-     [educations]="educations"
-     fxFlex="48%"></app-education>
-   <app-languages
-     [langs]="basicInfo?.langs"
-     fxFlex="48%"></app-languages>
-  </span>
   <app-experiences [experiences]="experiences"></app-experiences>
   <app-jobs [jobs]="jobs"></app-jobs>
+
 </div>

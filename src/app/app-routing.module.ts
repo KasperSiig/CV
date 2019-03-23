@@ -3,7 +3,7 @@ import { Routes, RouterModule } from '@angular/router';
 import {CvComponent} from './cv/cv.component';
 
 const routes: Routes = [
-  {path: 'cv', component: CvComponent}
+  {path: '', component: CvComponent}
 ];
 
 @NgModule({

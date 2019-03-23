@@ -1,12 +1,15 @@
 <mat-card
   class="about"
   (dblclick)="onToggleEdit($event)">
-  <mat-card-title>Om Mig</mat-card-title>
+  <mat-card-title><h2>Om Mig</h2></mat-card-title>
   <mat-card-content
+    class="mat-content"
     *ngIf="!isEditing">
-    {{ about }}
+    {{ about.substr(0, 368) }}<br><br>
+    {{ about.substr(368, 500) }}
   </mat-card-content>
   <mat-card-content
+    class="mat-content"
     *ngIf="isEditing"
     (dblclick)="onToggleEdit($event)">
     <mat-form-field

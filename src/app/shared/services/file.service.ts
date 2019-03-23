@@ -6,6 +6,8 @@ import {AngularFireStorage} from '@angular/fire/storage';
 import {defer, Observable, pipe} from 'rxjs';
 import {map, switchMap} from 'rxjs/operators';
 import {FileMetaData} from '../models/FileMetaData';
+import {HttpClient} from '@angular/common/http';
+import {environment} from '../../../environments/environment';
 
 @Injectable({
   providedIn: 'root'
@@ -13,11 +15,14 @@ import {FileMetaData} from '../models/FileMetaData';
 export class FileService implements IFileService {
 
   constructor(private db: AngularFirestore,
+              private http: HttpClient,
               private storage: AngularFireStorage) {
   }
 
   uploadImage(imageMetaData: ImageMetaData): Observable<ImageMetaData> {
     if (imageMetaData.imageBlob) {
+      this.http.post(environment.apiUrl + '/api/v1/files/image', imageMetaData).subscribe();
+      console.log('hello');
       const fileToUpload = new File(
         [imageMetaData.imageBlob],
         imageMetaData.name,

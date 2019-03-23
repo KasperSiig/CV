@@ -5,7 +5,7 @@ import {AppRoutingModule} from './app-routing.module';
 import {AppComponent} from './app.component';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {HeaderComponent} from './shared/header/header.component';
-import {MatButtonModule, MatCardModule, MatFormFieldModule, MatInputModule, MatToolbarModule} from '@angular/material';
+import {MatButtonModule, MatCardModule, MatFormFieldModule, MatIconModule, MatInputModule, MatToolbarModule} from '@angular/material';
 import {BasicInfoComponent} from './basic-info/basic-info.component';
 import {CvComponent} from './cv/cv.component';
 import {FlexLayoutModule} from '@angular/flex-layout';
@@ -27,6 +27,9 @@ import {MaterialModule} from './shared/modules/material/material.module';
 import {FirebaseModule} from './shared/modules/firebase/firebase.module';
 import {ImageCropperModule} from 'ngx-image-cropper';
 import {FileService} from './shared/services/file.service';
+import { CertsComponent } from './certs/certs.component';
+import {HttpModule} from '@angular/http';
+import {HttpClientModule} from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -40,7 +43,8 @@ import {FileService} from './shared/services/file.service';
     LanguagesComponent,
     ExperiencesComponent,
     JobsComponent,
-    ZeroYearPipe
+    ZeroYearPipe,
+    CertsComponent
   ],
   imports: [
     BrowserModule,
@@ -51,7 +55,9 @@ import {FileService} from './shared/services/file.service';
     ReactiveFormsModule,
     MaterialModule,
     FirebaseModule,
-    ImageCropperModule
+    ImageCropperModule,
+    MatIconModule,
+    HttpClientModule
   ],
   providers: [
     {

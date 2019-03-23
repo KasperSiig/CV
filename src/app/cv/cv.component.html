@@ -12,15 +12,18 @@
       class="cv__btn-save">Update Info
     </button>
     <div
-      fxLayout="row"
+      fxLayout="row wrap"
       fxFlex="80%"
+      fxLayoutGap="5px grid"
       fxLayoutAlign="space-between">
       <app-basic-info
-        fxFlex="28%"
+        fxFlex="27%"
+        fxFlex.lt-md="100%"
+        [educations]="educations"
         [basicInfo]="basicInfo"></app-basic-info>
       <app-extended-info
-        fxFlex="68%"
-        [educations]="educations"
+        fxFlex="72%"
+        fxFlex.lt-md="100%"
         [experiences]="experiences"
         [jobs]="jobs"
         [basicInfo]="basicInfo"></app-extended-info>

@@ -1,10 +1,11 @@
 <div
   class="container"
+  fxLayoutGap="10px"
   fxLayout="column">
   <mat-card>
     <mat-card-header>
-      <mat-card-title>{{ basicInfo?.name }}</mat-card-title>
-      <mat-card-subtitle>{{ basicInfo?.title }}</mat-card-subtitle>
+      <mat-card-title><h2>{{ basicInfo?.name }}</h2></mat-card-title>
+      <mat-card-subtitle class=".mat-subtitle">{{ basicInfo?.title }}</mat-card-subtitle>
     </mat-card-header>
     <img
       mat-card-image
@@ -18,18 +19,20 @@
         [imageChangedEvent]="imageChangedEvent"
         format="png"
         (imageCropped)="onImageCropped($event)"
-        [aspectRatio]="9/13"
+        [aspectRatio]="9/10"
         [onlyScaleDown]="true"></image-cropper>
     </span>
-    <mat-card-content>
-      <ul
-        fxLayoutGap="5px"
-        fxLayout="column">
-        <li><b>Tlf:</b> +45 {{ basicInfo?.phone }}</li>
-        <li><b>Mail:</b> {{ basicInfo?.email }}</li>
-        <li><b>Bopæl:</b> {{ basicInfo?.address }}</li>
-        <li><b>Fødselsdato:</b> {{ basicInfo?.birthday?.seconds * 1000 | date}}</li>
-      </ul>
+    <mat-card-content
+      class="mat-content"
+      fxLayoutGap="5px"
+      fxLayout="column">
+        <span><b>Tlf</b><br> <i>+45 {{ basicInfo?.phone.toString().substr(0,4) }} {{ basicInfo?.phone.toString().substr(4,8) }}</i></span>
+        <span><b>Mail</b><br> <i>{{ basicInfo?.email }}</i></span>
+        <span><b>Bopæl</b><br> <i>{{ basicInfo?.address }}</i></span>
+        <span><b>Fødselsdato</b><br> <i>{{ basicInfo?.birthday?.seconds * 1000 | date:'longDate' }}</i></span>
     </mat-card-content>
   </mat-card>
+  <app-certs></app-certs>
+  <app-education [educations]="educations"></app-education>
+  <app-languages [langs]="basicInfo?.langs"></app-languages>
 </div>
