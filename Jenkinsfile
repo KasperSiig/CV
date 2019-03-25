@@ -3,10 +3,8 @@ pipeline {
     stages {
         stage('build') {
             steps {
-                sh '''
-                npm --version
-                ng test
-                '''
+                sh 'npm --version'
+                sh 'ng test'
             }
         }
     }
