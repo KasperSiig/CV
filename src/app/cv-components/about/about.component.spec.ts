@@ -1,6 +1,9 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { AboutComponent } from './about.component';
+import {MatCardModule, MatFormFieldModule} from '@angular/material';
+import {ReactiveFormsModule} from '@angular/forms';
+import {ZeroYearPipe} from '../../shared/models/shared/pipes/zero-year.pipe';
 
 describe('AboutComponent', () => {
   let component: AboutComponent;
@@ -8,7 +11,18 @@ describe('AboutComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ AboutComponent ]
+      declarations: [
+        AboutComponent,
+        ZeroYearPipe
+      ],
+      imports: [
+        MatCardModule,
+        ReactiveFormsModule,
+        MatFormFieldModule
+      ],
+      providers: [
+        {provide: 'ICvService', useClass: CvServiceStub}
+      ]
     })
     .compileComponents();
   }));
@@ -16,6 +30,7 @@ describe('AboutComponent', () => {
   beforeEach(() => {
     fixture = TestBed.createComponent(AboutComponent);
     component = fixture.componentInstance;
+    component.about = '';
     fixture.detectChanges();
   });
 
@@ -23,3 +38,7 @@ describe('AboutComponent', () => {
     expect(component).toBeTruthy();
   });
 });
+
+class CvServiceStub {
+  updateAbout(about: string) {};
+}

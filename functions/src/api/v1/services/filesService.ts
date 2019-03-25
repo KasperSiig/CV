@@ -1,9 +1,10 @@
 const admin = require('firebase-admin');
-// const functions = require('firebase-functions');
 const buffer = require('buffer');
 
 module.exports.uploadImage = async (imageMetaData) => {
-  await uploadFileMetaData(imageMetaData);
+  const docRef = await uploadFileMetaData(imageMetaData);
+  imageMetaData.id = docRef.id;
+  await uploadFile(imageMetaData);
 };
 
 /**
@@ -11,7 +12,12 @@ module.exports.uploadImage = async (imageMetaData) => {
  * @param fileMetaData Object containing metadata of file
  */
 function uploadFileMetaData(fileMetaData) {
-  return uploadFile(fileMetaData);
+  return admin.firestore().collection('files').add({
+    name: fileMetaData.name,
+    type: fileMetaData.type,
+    size: fileMetaData.size,
+    lastModified: -1
+  });
 }
 
 /**
@@ -21,11 +27,11 @@ function uploadFileMetaData(fileMetaData) {
 function uploadFile(fileMetaData) {
   // Converts to uploadable file
   const base64Image = fileMetaData.base64Image.replace(/^data:image\/\w+;base64,/, '');
-  // const imageBuffer = new buffer.alloc(base64Image, 'base64');
+  const imageBuffer = new Buffer(base64Image, 'base64');
 
   // Saves file in storage with metadata
   return admin.storage().bucket().file('profile-pictures/' + fileMetaData.id)
-    .save(base64Image, {
+    .save(imageBuffer, {
       gzip: true,
       metadata: {contentType: fileMetaData.type}
     });

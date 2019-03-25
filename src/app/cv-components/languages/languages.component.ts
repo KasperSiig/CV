@@ -7,7 +7,7 @@ import {Component, Input, OnInit} from '@angular/core';
 })
 export class LanguagesComponent implements OnInit {
 
-  @Input() langs: any[];
+  @Input() langs = [];
 
   constructor() {
   }

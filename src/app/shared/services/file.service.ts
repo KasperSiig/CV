@@ -22,7 +22,6 @@ export class FileService implements IFileService {
   uploadImage(imageMetaData: ImageMetaData): Observable<ImageMetaData> {
     if (imageMetaData.imageBlob) {
       this.http.post(environment.apiUrl + '/api/v1/files/image', imageMetaData).subscribe();
-      console.log('hello');
       const fileToUpload = new File(
         [imageMetaData.imageBlob],
         imageMetaData.name,

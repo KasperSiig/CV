@@ -1,6 +1,7 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { LanguagesComponent } from './languages.component';
+import {MatCardModule} from '@angular/material';
 
 describe('LanguagesComponent', () => {
   let component: LanguagesComponent;
@@ -8,7 +9,10 @@ describe('LanguagesComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ LanguagesComponent ]
+      declarations: [ LanguagesComponent ],
+      imports: [
+        MatCardModule
+      ]
     })
     .compileComponents();
   }));
