@@ -16,7 +16,7 @@ pipeline {
                       image: circleci/node:10-browsers  
                       command:
                       - cat
-                        tty: true
+                      tty: true
                 """
         }
     }
