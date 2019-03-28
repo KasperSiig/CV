@@ -26,8 +26,6 @@ pipeline {
                 container('node') {
                     echo "`pwd`"
                     sh """
-                        ln -s `pwd` /home/circleci/cv
-                        cd /home/circleci/cv
                         yarn install
                         yarn test
                     """
