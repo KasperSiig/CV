@@ -1,7 +1,6 @@
 pipeline {
     agent{
         kubernetes {
-            label 'cv'
             defaultContainer 'jnlp'
             yaml """
                 apiVersion: v1
