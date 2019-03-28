@@ -13,7 +13,7 @@ pipeline {
                     serviceAccount: jenkins
                     containers:
                     - name: node
-                      image: circleci/node:10-browsers  
+                      image: kasperns/node-jenkins  
                       command:
                       - cat
                       tty: true
