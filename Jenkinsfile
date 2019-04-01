@@ -22,15 +22,6 @@ pipeline {
                 command:
                   - cat
                 tty: true
-            volumes:
-              - name: jenkins-docker-cfg
-                projected:
-                  sources:
-                    - secret:
-                        name: regcred
-                        items:
-                          - key: .dockerconfigjson
-                            path: .docker/config.json
           """
     }
   }
@@ -38,22 +29,17 @@ pipeline {
     stage('Test') {
       steps {
         container('node') {
-          sh("yarn install")
-          sh("yarn test")
-          sh("yarn buildprod")
+          sh """
+            yarn install
+            yarn test
+            """
         }
       }
     }
-    stage('Building & Pushing Image') {
+    stage('Kubectl') {
       steps {
-        git 'https://github.com/jenkinsci/docker-jnlp-slave.git'
-        container(name: 'kaniko', shell: '/busybox/sh') {
-          withEnv(['PATH+EXTRA=/busybox:/kaniko']) {
-            sh '''
-              #!/busybox/sh
-              /kaniko/executor -f `pwd`/Dockerfile -c `pwd`--insecure --skip-tls-verify --cache=true --destination=kasperns/cv-test
-            '''
-          }
+        container('kubectl') {
+          sh("kubectl get pods")
         }
       }
     }
