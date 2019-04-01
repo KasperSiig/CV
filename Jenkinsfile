@@ -34,10 +34,6 @@ pipeline {
     stage('Test') {
       steps {
         container('node') {
-          sh """
-            yarn install
-            yarn test
-            """
           sh("yarn install")
           sh("yarn test")
           sh("yarn buildprod")
