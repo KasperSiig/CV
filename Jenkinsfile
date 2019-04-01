@@ -26,8 +26,8 @@ pipeline {
                   - cat
                 tty: true
                 volumeMounts:
-                  name: dockersock
-                  mountPath: /var/run/docker.sock
+                  - name: dockersock
+                    mountPath: /var/run/docker.sock
               - name: kubectl
                 image: gcr.io/cloud-builders/kubectl
                 command:
