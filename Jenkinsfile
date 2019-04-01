@@ -17,6 +17,11 @@ pipeline {
                 command:
                   - cat
                 tty: true
+              - name: docker
+                image: gcr.io/cloud-builders/docker
+                command:
+                  - cat
+                tty: true
               - name: kubectl
                 image: gcr.io/cloud-builders/kubectl
                 command:
@@ -33,13 +38,15 @@ pipeline {
             yarn install
             yarn test
             """
+          stash includes: 'node_modules/', name: 'node_modules'
         }
       }
     }
-    stage('Kubectl') {
+    stage('Building & Pushing Image') {
       steps {
-        container('kubectl') {
-          sh("kubectl get pods")
+        container('docker') {
+          unstash 'node_modules'
+          sh("docker build -t kasperns/cv-test .")
         }
       }
     }
