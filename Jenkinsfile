@@ -38,17 +38,14 @@ pipeline {
             yarn install
             yarn test
             """
-          stash includes: 'node_modules/**/*', name: 'node_modules'
         }
       }
     }
     stage('Building & Pushing Image') {
       steps {
         container('docker') {
-          dir('/opt/jenkins_artifacts'){
-            unstash 'node_modules'
-          }
           sh("`pwd`")
+          sh("ls -la")
         }
       }
     }
