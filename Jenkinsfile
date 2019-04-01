@@ -1,4 +1,7 @@
 pipeline {
+  environment {
+    DOCKER = credentials("docker")
+  }
   agent {
     kubernetes {
       label 'app'
@@ -51,9 +54,7 @@ pipeline {
       steps {
         container('docker') {
           withCredentials([usernameColonPassword(credentialsId: 'docker', variable: 'DOCKER')]) {
-            sh("USER=$(echo $DOCKER | cut -d':' -f 1)")
-            sh("PASS=$(echo $DOCKER | cut -d':' -f 2)")
-            sh("docker login -u $USER -p $PASS")
+            sh("docker login -u $DOCKER_USR -p $DOCKER_PSW")
           }
         }
       }
