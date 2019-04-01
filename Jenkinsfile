@@ -22,23 +22,11 @@ pipeline {
                 command:
                   - /busybox/cat
                 tty: true
-                volumeMounts:
-                  - name: jenkins-docker-cfg
-                    mountPath: /root
               - name: kubectl
                 image: gcr.io/cloud-builders/kubectl
                 command:
                   - cat
                 tty: true
-            volumes:
-              - name: jenkins-docker-cfg
-                projected:
-                  sources:
-                    - secret:
-                        name: regcred
-                        items:
-                          - key: .dockerconfigjson
-                            path: .docker/config.json
           """
     }
   }
