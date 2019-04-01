@@ -34,9 +34,9 @@ pipeline {
                   - cat
                 tty: true
           volumes:
-            - name: dockersock
-              hostPath:
-                path: /var/run/docker.sock
+          - name: dockersock
+            hostPath:
+              path: /var/run/docker.sock
         """
     }
   }
