@@ -38,7 +38,7 @@ pipeline {
             yarn install
             yarn test
             """
-          stash includes: 'node_modules/', name: 'node_modules'
+          stash includes: 'node_modules/*', name: 'node_modules'
         }
       }
     }
@@ -46,7 +46,7 @@ pipeline {
       steps {
         container('docker') {
           unstash 'node_modules'
-          sh("docker build -t kasperns/cv-test .")
+          sh("`pwd`")
         }
       }
     }
