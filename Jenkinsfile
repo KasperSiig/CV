@@ -44,9 +44,9 @@ pipeline {
     stage('Test') {
       steps {
         container('node') {
-#         sh("yarn install")
-#         sh("yarn test")
-#         sh("yarn buildprod")
+          //sh("yarn install")
+          //sh("yarn test")
+          //sh("yarn buildprod")
         }
       }
     }
