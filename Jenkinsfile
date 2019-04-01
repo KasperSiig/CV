@@ -45,7 +45,9 @@ pipeline {
     stage('Building & Pushing Image') {
       steps {
         container('docker') {
-          unstash 'node_modules'
+          dir('/opt/jenkins_artifacts'){
+            unstash 'node_modules'
+          }
           sh("`pwd`")
         }
       }
