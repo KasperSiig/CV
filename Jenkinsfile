@@ -17,28 +17,33 @@ pipeline {
                 command:
                   - cat
                 tty: true
-              - name: docker
-                image: gcr.io/cloud-builders/docker
+              - name: kaniko
+                image: gcr.io/kaniko-project/executor
                 command:
-                  - cat
+                  - /busybox/cat
                 tty: true
                 volumeMounts:
-                  - name: dockersock
-                    mountPath: /var/run/docker.sock
+                  - name: jenkins-docker-cfg
+                    mountPath: /root
               - name: kubectl
                 image: gcr.io/cloud-builders/kubectl
                 command:
                   - cat
                 tty: true
             volumes:
-              - name: dockersock
-                hostPath:
-                  path: /var/run/docker.sock
+              - name: jenkins-docker-cfd
+                projected:
+                  sources:
+                    - secret:
+                        name: regcred
+                        items:
+                          - key: .dockerconfigjson
+                            path: .docker/config.json
           """
     }
   }
   stages {
-    stage('Test1') {
+    stage('Test') {
       steps {
         container('node') {
           sh("yarn install")
@@ -49,8 +54,14 @@ pipeline {
     }
     stage('Building & Pushing Image') {
       steps {
-        container('docker') {
-          sh("docker build -t test .")
+        git 'https://github.com/jenkinsci/docker-jnlp-slave.git'
+        container(name: 'kaniko', shell: '/busybox/sh') {
+          withEnv(['PATH+EXTRA=/busybox:/kaniko']) {
+            sh '''
+              #!/busybox/sh
+              /kaniko/executor -f `pwd`/Dockerfile -c `pwd`--insecure --skip-tls-verify --cache=true --destination=kasperns/cv-test
+            '''
+          }
         }
       }
     }
