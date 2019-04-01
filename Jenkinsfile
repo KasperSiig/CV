@@ -1,4 +1,4 @@
-def projectName = 'CV-test'
+def projectName = 'cv-test'
 def repository = '' // Leave blank for docker hub. NOTE: End with semicolon if filled
 
 pipeline {
