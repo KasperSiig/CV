@@ -1,3 +1,6 @@
+def projectName = 'CV-test'
+def repository = '' // Leave blank for docker hub. NOTE: End with semicolon if filled
+
 pipeline {
   environment {
     DOCKER = credentials("docker")
@@ -44,18 +47,18 @@ pipeline {
     stage('Test') {
       steps {
         container('node') {
-          //sh("yarn install")
-          //sh("yarn test")
-          //sh("yarn buildprod")
+          sh("yarn install")
+          sh("yarn test")
+          sh("yarn buildprod")
         }
       }
     }
     stage('Build') {
       steps {
         container('docker') {
-          withCredentials([usernameColonPassword(credentialsId: 'docker', variable: 'DOCKER')]) {
-            sh("docker login -u $DOCKER_USR -p $DOCKER_PSW")
-          }
+          sh("docker login -u $DOCKER_USR -p $DOCKER_PSW")
+          sh("docker build -t ${repository}$DOCKER_USR/${projectName} .")
+          sh("docker push ${repository}$DOCKER_USR/${projectName}")
         }
       }
     }
