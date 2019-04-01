@@ -22,18 +22,11 @@ pipeline {
                 command:
                   - cat
                 tty: true
-                volumeMounts:
-                  - name: dockersock
-                    mountPath: /var/run/docker.sock
               - name: kubectl
                 image: gcr.io/cloud-builders/kubectl
                 command:
                   - cat
                 tty: true
-            volumes:
-              - name: dockersock
-                hostPath:
-                  path: /var/run/docker.sock
           """
     }
   }
@@ -45,13 +38,16 @@ pipeline {
             yarn install
             yarn test
             """
+          sh("yarn install")
+          sh("yarn test")
+          sh("yarn buildprod")
         }
       }
     }
     stage('Building & Pushing Image') {
       steps {
         container('docker') {
-          sh("docker build -t kasperns/cv-test .")
+          sh("docker build -t test .")
         }
       }
     }
