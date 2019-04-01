@@ -31,7 +31,7 @@ pipeline {
                   - cat
                 tty: true
             volumes:
-              - name: jenkins-docker-cfd
+              - name: jenkins-docker-cfg
                 projected:
                   sources:
                     - secret:
