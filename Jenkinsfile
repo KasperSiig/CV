@@ -38,6 +38,7 @@ pipeline {
             yarn install
             yarn test
             """
+          sh("touch thisisaverylongtestnametobesure.jpg")
         }
       }
     }
