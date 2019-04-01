@@ -38,7 +38,7 @@ pipeline {
     }
   }
   stages {
-    stage('Test') {
+    stage('Test1') {
       steps {
         container('node') {
           sh("yarn install")
