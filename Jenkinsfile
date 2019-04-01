@@ -44,7 +44,7 @@ pipeline {
     stage('Building & Pushing Image') {
       steps {
         container('docker') {
-          sh("`pwd`")
+          sh("pwd")
           sh("ls -la")
         }
       }
