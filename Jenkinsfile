@@ -51,7 +51,9 @@ pipeline {
       steps {
         container('docker') {
           withCredentials([usernameColonPassword(credentialsId: 'docker', variable: 'DOCKER')]) {
-            sh("echo DOCKER=$DOCKER")
+            sh("USER=$(echo $DOCKER | cut -d':' -f 1)")
+            sh("PASS=$(echo $DOCKER | cut -d':' -f 2)")
+            sh("docker login -u $USER -p $PASS")
           }
         }
       }
