@@ -1,7 +1,4 @@
 pipeline {
-  environment {
-    DOCKERUSERNAME = credentials("docker")
-  }
   agent {
     kubernetes {
       label 'app'
@@ -53,7 +50,9 @@ pipeline {
     stage('Build') {
       steps {
         container('docker') {
-          sh("echo USERNAME=$DOCKERUSERNAME_USR")
+          withCredentials([usernameColonPassword(credentialsId: 'docker', variable: 'DOCKER')]) {
+            sh("echo DOCKER=$DOCKER")
+          }
         }
       }
     }
