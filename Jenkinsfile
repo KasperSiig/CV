@@ -38,7 +38,7 @@ pipeline {
             yarn install
             yarn test
             """
-          stash includes: 'node_modules/*', name: 'node_modules'
+          stash includes: 'node_modules/**/*', name: 'node_modules'
         }
       }
     }
