@@ -1,36 +1,47 @@
 pipeline {
-    agent{
-        kubernetes {
-            label 'app'
-            defaultContainer 'jnlp'
-            yaml """
-                apiVersion: v1
-                kind: Pod
-                metadata:
-                    labels:
-                        component: ci
-                spec:
-                    serviceAccount: jenkins
-                    containers:
-                    - name: node
-                      image: kasperns/node-jenkins  
-                      command:
-                      - cat
-                      tty: true
-                """
-        }
+  agent {
+    kubernetes {
+      label 'app'
+      defaultContainer 'jnlp'
+      yaml """
+          apiVersion: v1
+          kind: Pod
+          metadata:
+            labels:
+              component: ci
+          spec:
+            serviceAccount: jenkins
+            containers:
+              - name: node
+                image: kasperns/node-jenkins  
+                command:
+                  - cat
+                tty: true
+              - name: kubectl
+                image: gcr.io/cloud-builders/kubectl
+                command:
+                  - cat
+                tty: true
+          """
     }
-    stages {
-        stage('Test') {
-            steps {
-                container('node') {
-                    echo "`pwd`"
-                    sh """
-                        yarn install
-                        yarn test
-                    """
-                }
-            }
+  }
+  stages {
+    stage('Test') {
+      steps {
+        container('node') {
+          sh """
+            yarn install
+            yarn test
+            """
         }
+      }
     }
+    stage('Kubectl') {
+      steps {
+        container('kubectl') {
+          sh("kubectl get pods")
+        }
+      }
+    }
+  }
 }
