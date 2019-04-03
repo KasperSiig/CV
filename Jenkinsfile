@@ -47,6 +47,7 @@ pipeline {
     stage('Test') {
       steps {
         container('node') {
+          sh("echo pwd")
           sh("yarn install")
           sh("yarn test")
           sh("yarn buildprod")
