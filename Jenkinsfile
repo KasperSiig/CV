@@ -50,6 +50,7 @@ pipeline {
           sh("yarn install")
           sh("yarn test")
           sh("yarn buildprod")
+          junit 'test-results/**/*.xml'
         }
       }
     }
