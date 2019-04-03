@@ -21,6 +21,10 @@ module.exports = function (config) {
             flags: ['--no-sandbox']
         }
     },
+    junitReporter: {
+        outputDir: 'test-results',
+        outputFile: 'unit-test-results'
+    },
     coverageIstanbulReporter: {
       dir: require('path').join(__dirname, '../coverage'),
       reports: ['html', 'lcovonly'],
