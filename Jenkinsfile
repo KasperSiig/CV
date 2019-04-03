@@ -47,11 +47,11 @@ pipeline {
     stage('Test') {
       steps {
         container('node') {
-          sh("echo pwd")
+          sh("echo $(pwd)")
           sh("yarn install")
           sh("yarn test")
           sh("yarn buildprod")
-          junit 'test-results/**/*.xml'
+          junit 'src/test-results/**/*.xml'
         }
       }
     }
