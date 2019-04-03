@@ -114,3 +114,5 @@ fabric.properties
 
 # End of https://www.gitignore.io/api/angular,webstorm
 *node_modules*
+
+src/test-results/HeadlessChrome_0.0.0_(Mac_OS_X_10.14.3)/unit-test-results.xml
