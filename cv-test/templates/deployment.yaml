@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: cv-test-deployment
+  labels:
+    app: cv-test
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: cv-test
+  template:
+    metadata:
+      labels:
+        app: cv-test
+    spec:
+      containers:
+        - name: cv-test
+          image: kasperns/cv-test
+          ports:
+            - containerPort: 80
