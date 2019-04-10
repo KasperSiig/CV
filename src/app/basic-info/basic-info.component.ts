@@ -26,7 +26,7 @@ export class BasicInfoComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit() {
-    this.sub = this.cvService.basicInfo
+    this.sub = this.cvService.getBasicInfo()
       .subscribe(info => {
         this.croppedImage = info === null ? '' : info.imageUrl;
       });

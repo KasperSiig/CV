@@ -33,6 +33,10 @@ export class CvService implements ICvService {
       });
   }
 
+  getBasicInfo(): Observable<BasicInfo> {
+    return this.basicInfo.asObservable();
+  }
+
   getEducation(): Observable<Education[]> {
     return this.db.collection<Education>('educations').valueChanges();
   }

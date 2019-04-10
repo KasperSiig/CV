@@ -18,6 +18,7 @@ export interface ICvService {
    */
   fetchBasicInfo();
 
+  getBasicInfo(): Observable<BasicInfo>;
   /**
    * Returns an Observable containing an array of Education
    */
