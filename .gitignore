@@ -116,3 +116,4 @@ fabric.properties
 *node_modules*
 
 src/test-results/HeadlessChrome_0.0.0_(Mac_OS_X_10.14.3)/unit-test-results.xml
+endpoints-0.1.0.tgz
